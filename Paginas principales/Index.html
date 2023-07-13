@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Paginas principales/css/index.css">
+    <script src="../Paginas principales/js/index.js"></script>
+    <title>Index</title>
+</head>
+
+<body>
+    <div class="encabezado" id="encabezado">
+        <a href="Index.html" class="imagen_index">
+            <img src="img/BILogo.png" width="150px" height="80px">
+        </a>
+        <div class="derecha">
+            <a href="#" class="activo">Inicio</a>
+            <a href="#">DLDUN2</a>
+            <a href="#">Contacto</a>
+        </div>
+    </div>
+    <div class="renglon">
+        <h2>Galeria</h2>
+        <div class="columna">
+            <img src="img/sanMiguel.jpg" alt="San miguel" width="300px"  height="426px" onclick="despliega(this)"/>
+        </div>
+        <div class="columna">
+            <img src="img/Superman.png" alt="Superman" width="300px" height="426px" onclick="despliega(this)"/>
+        </div>
+        <div class="columna">
+            <img src="img/CapitanAmerica.jpg" alt="Capitan america" width="300px" height="426px" onclick="despliega(this)"/>
+        </div>
+        <div class="columna">
+            <img src="img/MarcoAurelio.png" alt="Marco aurelio" width="300px" height="426px" onclick="despliega(this)"/>
+        </div>
+        <div class="columna">
+            <img src="img/Thorppin.png" alt="Thorppin" width="300px" height="426px" onclick="despliega(this)"/>
+        </div>
+        <div class="columna">
+            <img src="img/Guts.jpg" alt="Guts" width="300px" height="426px" onclick="despliega(this)"/>
+        </div>
+    </div>
+    <div class="contenido">
+        <span onclick="this.parentElement.style.display='none'" class="cerrar">&times;</span>
+        <img id="imagen" width="500px" height="500px">
+        <div id="texto"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+/* --- Decoración del encabezado --- */
+
+.encabezado {
+    overflow: hidden;
+    background-color: brown;
+    padding: 20px 10px;
+}
+
+.encabezado a {
+    float: left;
+    color: yellow;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+}
+
+.encabezado a:hover {
+    background-color: #C9C9C9;
+    color: black;
+}
+
+.encabezado a.activo {
+    background-color: orange;
+    color: white;
+}
+
+.derecha {
+    float: right;
+}
+
+@media screen and (max-width: 600px) {
+    .encabezado a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+
+    .derecha {
+        float: none;
+    }
+}
+
+/* --- Decoración de la galeria --- */
+
+.columna {
+    float: left;
+    width: 16%;
+    padding: 10px;
+}
+
+.columna img {
+    opacity: .7;
+    cursor: pointer;
+}
+
+.columna img:hover {
+    opacity: 1;
+}
+
+h2 {
+    text-align: center;
+}
+
+.renglon::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.contenido {
+    display: none;
+    position: relative;
+    top: 50%;
+    left: 35%;
+    margin: -25px 0 0 -25px;
+    /* aplicar a top y al margen izquierdo un valor negativo para completar el centrado del elemento hijo */
+}
+
+#texto {
+    position: absolute;
+    top: 25px;
+    left: 5px;
+    color: blue;
+    font-size: 30px;
+}
+
+.cerrar {
+    position: absolute;
+    top: 20px;
+    left: 470px;
+    color: brown;
+    font-size: 35px;
+    cursor: pointer;
+}
