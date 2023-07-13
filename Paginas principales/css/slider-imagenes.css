@@ -1,0 +1,119 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+/* .foto {
+    display: none;
+} */
+
+img {
+    vertical-align: middle;
+}
+
+#contenedor {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+.antes,
+.despues {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 1em;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 1s ease;
+    border-radius: 0 3px 3px 0;
+}
+
+.despues {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.antes:hover,
+.despues:hover {
+    background-color: brown;
+}
+
+.texto {
+    color: white;
+    font-size: 1em;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+/* --- Contador de imagenes --- */
+
+.numero {
+    color: white;
+    font-size: 1em;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+.bolita {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: brown;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 1s ease;
+}
+
+#bolitas {
+    text-align: center;
+}
+
+.activo,
+.bolita:hover {
+    background-color: #EF9A9A;
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1s;
+    animation-name: fade;
+    animation-duration: 1s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .antes, .despues, .text, .numero {
+        font-size: 10px;
+    }
+}
