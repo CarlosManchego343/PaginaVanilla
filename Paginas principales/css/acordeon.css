@@ -1,0 +1,70 @@
+/* --- Decoración del encabezado --- */
+
+.encabezado {
+    overflow: hidden;
+    background-color: brown;
+    padding: 20px 10px;
+}
+
+.encabezado a {
+    float: left;
+    color: yellow;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+}
+
+.encabezado a:hover {
+    background-color: #EF9A9A;
+    color: black;
+}
+
+.encabezado a.activo {
+    background-color: orange;
+    color: white;
+}
+
+.derecha {
+    float: right;
+}
+
+@media screen and (max-width: 600px) {
+    .encabezado a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+
+    .derecha {
+        float: none;
+    }
+}
+
+/* --- Decoración del acordeón --- */
+
+.acordeon{
+    background-color: brown;
+    color: yellow;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1em;
+    transition: 0.5s;
+}
+
+.activo, .acordeon:hover{
+    background-color: #EF9A9A;
+}
+
+.panel{
+    padding: 0 1em;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+}
