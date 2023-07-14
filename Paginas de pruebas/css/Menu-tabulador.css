@@ -1,0 +1,35 @@
+.tabuladores {
+    overflow: hidden;
+    border: 1px solid black;
+    background-color: brown;
+    width: 35%;
+}
+
+.tabuladores button{
+    text-align: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 1em;
+}
+
+.tabuladores button:hover{
+    background-color: #EF9A9A;
+}
+
+.contenido{
+    display: none;
+    padding: .5em 1em;
+    border: 1px solid black;
+    border-top: none;
+    width: 500px;
+}
+
+img{
+    position: relative;
+    left: 20%;
+}
+
+
