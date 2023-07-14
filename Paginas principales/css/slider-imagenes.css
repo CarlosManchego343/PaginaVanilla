@@ -6,9 +6,13 @@ body {
     margin: 0;
 }
 
-/* .foto {
+.titulo {
+    text-align: center;
+}
+
+.foto {
     display: none;
-} */
+}
 
 img {
     vertical-align: middle;
@@ -47,6 +51,7 @@ img {
 
 .texto {
     color: white;
+    background-color: black;
     font-size: 1em;
     padding: 8px 12px;
     position: absolute;
@@ -113,7 +118,11 @@ img {
 }
 
 @media only screen and (max-width: 400px) {
-    .antes, .despues, .text, .numero {
+
+    .antes,
+    .despues,
+    .text,
+    .numero {
         font-size: 10px;
     }
 }
