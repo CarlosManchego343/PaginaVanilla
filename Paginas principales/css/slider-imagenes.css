@@ -6,49 +6,49 @@ body {
     margin: 0;
 }
 
-/* --- Decoración del encabezado --- */
+/* --- Decoración del menú lateral --- */
 
-.encabezado {
-    overflow: hidden;
+.menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
     background-color: brown;
-    padding: 20px 10px;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
 }
 
-.encabezado a {
-    float: left;
-    color: yellow;
-    text-align: center;
-    padding: 12px;
+.menu a {
+    padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 18px;
-    line-height: 25px;
-    border-radius: 4px;
+    font-size: 2em;
+    color: yellow;
+    display: block;
+    transition: 0.5s;
 }
 
-.encabezado a:hover {
-    background-color: #C9C9C9;
+.menu a:hover {
     color: black;
 }
 
-.encabezado a.activo {
-    background-color: orange;
+.menu .cerrarMenu {
+    position: absolute;
     color: white;
+    top: 0;
+    right: 25px;
+    font-size: 2em;
+    margin-left: 50px;
 }
 
-.derecha {
-    float: right;
+.abreMenu {
+    font-size: 2em;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 600px) {
-    .encabezado a {
-        float: none;
-        display: block;
-        text-align: left;
-    }
-
-    .derecha {
-        float: none;
-    }
 
     .titulo {
         font-size: 20px;

@@ -6,6 +6,14 @@ window.onload = function () {
     for (var i = 0; i < acordeon_array.length; i++) {
         acordeon_array[i].addEventListener("click", selecciona, false);
     }
+
+    document.getElementById("abre").onclick = function () {
+        document.getElementById("miMenu").style.width = "250px"
+    }
+
+    document.getElementById("cerrarMenu").onclick= function () {
+        document.getElementById("miMenu").style.width = "0";
+    }
 }
 
 function selecciona() {
@@ -17,3 +25,4 @@ function selecciona() {
         panel.style.display = "block";
     }
 }
+
