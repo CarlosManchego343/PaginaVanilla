@@ -1,8 +1,8 @@
 window.onload = function () {
-    
+
     var signos = "+-*/";
     var x = new Array();
-    
+
     document.getElementById("abre").onclick = function () {
         document.getElementById("miMenu").style.width = "250px"
     }
@@ -18,7 +18,7 @@ window.onload = function () {
     x = document.querySelectorAll("input[type=button");
 
     for (let i = 0; i < x.length; i++) {
-        x[i].onclick = function() {
+        x[i].onclick = function () {
             let n = this.value;
             if (n == "C") {
                 borrar();
@@ -26,10 +26,10 @@ window.onload = function () {
                 borrarCaracter();
             } else if (n == "=") {
                 calcular();
-            } else if(signos.indexOf(n) > -1) {
-                validarSigno();
+            } else if (signos.indexOf(n) > -1) {
+                validarSigno(n);
             } else {
-                regresar();
+                regresar(n);
             }
         }
     }
@@ -56,21 +56,66 @@ function numeros(e) {
 }
 
 function borrar() {
-    console.log("Borrar");
+    document.forma.valor.value = "";
 }
 
 function borrarCaracter() {
-    console.log("Borrar caracter");
+    let anterior = document.forma.valor.value;
+    let nuevo = anterior.substring(0, anterior.length - 1);
+    console.log("Valor numero " + nuevo);
+    document.getElementById("valores").value = nuevo;
 }
 
 function calcular() {
-    console.log("Calcular");
+    let resultado = eval(document.forma.valor.value);
+    if (resultado == "Infinity") {
+        document.forma.valor.value = "No se puede dividir entre cero";
+    } else {
+        document.forma.valor.value = resultado;
+    }
 }
 
-function validarSigno() {
-    console.log("Validar signo");
+function validarSigno(n) {
+    let anterior = document.getElementById("valores").value;
+    if (anterior != "") {
+        document.getElementById("valores").value = anterior + n;
+        cadena = document.getElementById("valores").value;
+
+        let record = 0;
+        let igual = 1;
+
+        for (let a = 1; a < cadena.length; a++) {
+            
+            if (cadena.charAt(a) == "+" ||
+                cadena.charAt(a) == "-" ||
+                cadena.charAt(a) == "*" ||
+                cadena.charAt(a) == "/" ||
+                cadena.charAt(a) == ".") {
+                    igual++;
+            } else {
+                if (igual > record) {
+                    record = igual;
+                } else {
+                    igual = 1;
+                }
+            }
+
+            if (igual > record) {
+                record = igual;
+            }
+
+            if (record > 2) {
+                var numero = cadena.substring(0, cadena.length - 1);
+                document.getElementById("valores").value = numero;
+                record = 0;
+                igual = 1;
+            }
+        }
+    }
 }
 
-function regresar() {
-    console.log("Regresar");
+function regresar(n) {
+    let anterior = document.forma.valor.value;
+    let nuevo = anterior + n;
+    document.getElementById("valores").value = nuevo;
 }
