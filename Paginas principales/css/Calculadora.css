@@ -40,29 +40,19 @@
     cursor: pointer;
 }
 
+/* --- Decoración de la calculadora --- */
 
-/* --- Decoración del acordeón --- */
-
-.acordeon{
-    background-color: brown;
-    color: yellow;
-    cursor: pointer;
-    padding: 18px;
+input[type=button],
+input[type=text] {
     width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 1em;
-    transition: 0.5s;
+    height: 100%;
+    font-size: 30px;
+    background: brown;
+    color: yellow;
 }
 
-.activo, .acordeon:hover{
-    background-color: #EF9A9A;
-}
-
-.panel{
-    padding: 0 1em;
-    display: none;
-    background-color: white;
-    overflow: hidden;
+table, form{
+    width: 500px;
+    height: 400px;
+    margin: 0 auto;
 }

@@ -41,8 +41,28 @@
 }
 
 
-#reloj {
-    font-size: 5em;
-    text-align: center;
-    margin: 1em;
+/* --- Decoración del acordeón --- */
+
+.acordeon{
+    background-color: brown;
+    color: yellow;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1em;
+    transition: 0.5s;
+}
+
+.activo, .acordeon:hover{
+    background-color: #EF9A9A;
+}
+
+.panel{
+    padding: 0 1em;
+    display: none;
+    background-color: white;
+    overflow: hidden;
 }

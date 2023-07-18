@@ -40,19 +40,9 @@
     cursor: pointer;
 }
 
-/* --- Decoración de la calculadora --- */
 
-input[type=button],
-input[type=text] {
-    width: 100%;
-    height: 100%;
-    font-size: 30px;
-    background: brown;
-    color: yellow;
-}
-
-table, form{
-    width: 500px;
-    height: 400px;
-    margin: 0 auto;
+#reloj {
+    font-size: 5em;
+    text-align: center;
+    margin: 1em;
 }
