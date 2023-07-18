@@ -1,3 +1,47 @@
+/* --- Decoración del menú lateral --- */
+
+.menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: brown;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.menu a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 2em;
+    color: yellow;
+    display: block;
+    transition: 0.5s;
+}
+
+.menu a:hover {
+    color: black;
+}
+
+.menu .cerrarMenu {
+    position: absolute;
+    color: white;
+    top: 0;
+    right: 25px;
+    font-size: 2em;
+    margin-left: 50px;
+}
+
+.abreMenu {
+    font-size: 2em;
+    cursor: pointer;
+}
+
+/* --- Decoración del juego de memeoria --- */
+
 #juego {
     opacity: 0.3;
     width: 600px;
@@ -32,4 +76,14 @@ input {
 
 .centrar {
     text-align: center;
+}
+
+#iniciar {
+    margin: 20px auto;
+    width: 25%;
+    height: 50%;
+    border: 5px solid black;
+    border-radius: 4em;
+    background-color: brown;
+    color: yellow;
 }
