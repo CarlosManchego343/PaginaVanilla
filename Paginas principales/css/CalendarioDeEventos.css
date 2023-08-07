@@ -2,6 +2,11 @@
     width: 300% !important;
 }
 
+.table .sticky {
+    position: sticky;
+    left: 0;
+}
+
 .eventos {
     width: 350px;
 }
