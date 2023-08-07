@@ -1,8 +1,12 @@
 .table {
-    width: 500% !important;
+    width: 300% !important;
+}
+
+.eventos {
+    width: 350px;
 }
 
 .horarios {
-    width: 200px;
+    width: 100px;
     word-wrap: break-word;
 }
