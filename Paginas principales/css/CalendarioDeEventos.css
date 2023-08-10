@@ -15,3 +15,27 @@
     width: 100px;
     word-wrap: break-word;
 }
+
+.filasSalas {
+    height: 300px;
+}
+
+.form-check-input.Celebracion:checked {
+    background-color: #C2CF66;
+    border-color: #C2CF66;
+}
+
+.form-check-input.Funeral:checked {
+    background-color: #FF887E;
+    border-color: #FF887E;
+}
+
+.form-check-input.Curso:checked {
+    background-color: #ADD9E7;
+    border-color: #ADD9E7;
+}
+
+.form-check-input.Conferencia:checked {
+    background-color: #FBD26C;
+    border-color: #FBD26C;
+}
