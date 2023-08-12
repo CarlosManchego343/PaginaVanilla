@@ -39,3 +39,9 @@
     background-color: #FBD26C;
     border-color: #FBD26C;
 }
+
+.close {
+    background-color: brown;
+    color: white;
+    border-color: black;
+}
