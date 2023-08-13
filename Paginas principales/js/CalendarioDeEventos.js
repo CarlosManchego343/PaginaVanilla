@@ -291,8 +291,6 @@ function rellenarLaTabla(fechaSeleccionada) {
 
     let fechaSeleccionadaFormateada = `${año}-${mes}-${dia}`;
 
-    console.log("Seleccionaste esta fecha: ", fechaSeleccionadaFormateada);
-
     var salasUnicas = [];
 
     eventosDelDia = eventos.filter(function (evento) {
@@ -305,8 +303,6 @@ function rellenarLaTabla(fechaSeleccionada) {
             salasUnicas.push(salaUnica);
         }
     }
-
-    console.log("Traje estas salas: ", salasUnicas);
 
     $("#tabla tbody").empty();
 
