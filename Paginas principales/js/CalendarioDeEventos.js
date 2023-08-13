@@ -266,6 +266,20 @@ $(document).ready(function () {
         $("#informacionDetallada").modal('hide');
     })
 
+    $(document).on("click", "#submitButton", function () {
+        var inputSearch = $("#search").val();
+        if (inputSearch === "") {
+            $("#errorMsg").text("Por favor, ingrese una palabra");
+        } else {
+            $("#errorMsg").text("")
+            controlarBusqueda(inputSearch);
+        }
+    })
+
+    $(window).on("load", function () {
+        controlarBusqueda("");
+    });
+
 
 })
 
@@ -304,8 +318,8 @@ function rellenarLaTabla(fechaSeleccionada) {
 
         for (let i = 0; i < 24; i++) {
             row += `
-                <td class="align-middle text-center ${i+1}:30"></td>
-                <td class="align-middle text-center ${i+1}:60"></td>
+                <td class="align-middle text-center ${i + 1}:30"></td>
+                <td class="align-middle text-center ${i + 1}:60"></td>
             `;
         }
 
@@ -389,22 +403,22 @@ function crearAlertsEventos(eventos) {
         if (!eventosAgrupados[sala]) {
             eventosAgrupados[sala] = {};
         }
-    
+
         if (!eventosAgrupados[sala][horaInicio]) {
             eventosAgrupados[sala][horaInicio] = [];
         }
-    
+
         eventosAgrupados[sala][horaInicio].push(evento);
     });
 
-    $(".alerts").empty();
+    $("#alerts").empty();
 
     for (const sala in eventosAgrupados) {
         for (const horaInicio in eventosAgrupados[sala]) {
-            
+
             const eventosSalaHora = eventosAgrupados[sala][horaInicio];
 
-            eventosSalaHora.forEach(evento =>  {
+            eventosSalaHora.forEach(evento => {
                 let alertBackground;
 
                 switch (evento.tipoEvento) {
@@ -422,9 +436,9 @@ function crearAlertsEventos(eventos) {
                         break;
                 }
 
-            const divElement = `
+                const divElement = `
                 <div class="alert ${evento.tipoEvento.toLowerCase()}" role="alert" style="background-color: ${alertBackground}" id="${evento.id}">
-                    <h4 class="alert-heading">${evento.titulo}</h4>
+                    <h4 class="alert-heading mb-2">${evento.titulo}</h4>
                     <p>Organizador del evento: ${evento.organizador}</p>
                     <p>Documento del organizador: ${evento.documentoOrganizador}</p>
                     <hr>
@@ -432,7 +446,7 @@ function crearAlertsEventos(eventos) {
                 </div>
             `;
 
-            $(".alerts").append(divElement);
+                $("#alerts").append(divElement);
             })
         }
     }
@@ -440,7 +454,7 @@ function crearAlertsEventos(eventos) {
 
 function rellenarModal(idEvento) {
     let id = Number(idEvento);
-    const informacionDelEvento = eventosDelDia.find((item) => item.id === id );
+    const informacionDelEvento = eventosDelDia.find((item) => item.id === id);
 
     $(".modal-header").empty();
 
@@ -469,6 +483,24 @@ function rellenarModal(idEvento) {
     $("#informacionDetallada").modal('show');
 }
 
+function controlarBusqueda(parametroBuscado) {
+
+    const searchTerm = parametroBuscado.toLowerCase();
+
+
+    console.log("Buscaste esto: ", searchTerm);
+
+    $(".alert").each(function () {
+        const alert = $(this);
+        const textH4 = alert.find("h4").text().toLowerCase();
+        const textP = alert.find("p").text().toLowerCase();
+
+        if (!textH4.includes(searchTerm) && !textP.includes(searchTerm)) {
+            alert.hide();
+        }
+    });
+
+}
 
 function controlAlertCelebracion() {
     let alertCelebracion = $(".celebracion");
