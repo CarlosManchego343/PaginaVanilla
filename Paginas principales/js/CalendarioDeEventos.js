@@ -279,6 +279,10 @@ $(document).ready(function () {
     $(window).on("load", function () {
         controlarBusqueda("");
     });
+
+    $(document).on("click", "#recargar", function () {
+        location.reload();
+    })
 })
 
 function rellenarLaTabla(fechaSeleccionada) {
@@ -312,8 +316,8 @@ function rellenarLaTabla(fechaSeleccionada) {
 
         for (let i = 0; i < 24; i++) {
             row += `
-                <td class="align-middle text-center ${i + 1}:30"></td>
-                <td class="align-middle text-center ${i + 1}:60"></td>
+                <td class="align-middle text-center" id="${i + 1}:00"></td>
+                <td class="align-middle text-center" id="${i + 1}:30"></td>
             `;
         }
 
@@ -344,7 +348,6 @@ function crearAlertsEventos(eventos) {
             tiposDeEventos.push(tipoEvento);
         }
     }
-
 
     $(".listaTipoDeEventos").empty();
 
@@ -407,8 +410,6 @@ function crearAlertsEventos(eventos) {
 
     $("#tabla tbody tr").find("td:not(:first-child)").empty();
 
-    $("#alerts").empty();
-
     for (const sala in eventosAgrupados) {
         for (const horaInicio in eventosAgrupados[sala]) {
 
@@ -441,17 +442,29 @@ function crearAlertsEventos(eventos) {
                     <hr>
                     <p class="mb-0">Horario: ${evento.horaInicio} - ${evento.horaFin}</p>
                 </div>
-            `;
+                `;
 
-            $("#tabla tbody tr").each(function() {
-                var contenido = $(this).find("td:first-child").html();
-        
-                if (contenido === sala) {
-                    console.log(`En la sala ${contenido}: ${evento.titulo}`);
-                }
-            });
+                $("#tabla tbody tr").each(function () {
+                    var contenido = $(this).find("td:first-child").html();
 
-                $("#alerts").append(divElement);
+                    if (contenido === sala) {
+
+                        var columnaIndice = -1; // Inicialización para identificar la columna deseada
+                        var idsDeTd = $(this).find("td:not(:first-child)").map(function (index) {
+                            if ($(this).attr("id") === horaInicio) {
+                                columnaIndice = index + 1; // Sumar 1 para contar la columna
+                            }
+                            return $(this).attr("id");
+                        }).get();
+
+                        if (columnaIndice !== -1) {
+                            console.log(`En la sala ${contenido}: ${evento.titulo} y comienza a las ${horaInicio}`);
+                
+                            // Agregar el divElement en la celda específica
+                            $(this).find(`td:nth-child(${columnaIndice + 1})`).append(divElement);
+                        }
+                    }
+                });
             })
         }
     }
