@@ -283,6 +283,17 @@ $(document).ready(function () {
     $(document).on("click", "#recargar", function () {
         location.reload();
     })
+
+    const alertElements = $('.alert');
+
+    // Obtener referencia a la columna de las salas
+    const columnSalas = $('.sticky');
+
+    // Calcular la posición horizontal de la columna de las salas
+    const columnSalasLeft = columnSalas.offset().left;
+
+    checkAlertVisibility(alertElements, columnSalasLeft);
+    $(window).scroll(checkAlertVisibility(alertElements, columnSalasLeft));
 })
 
 function rellenarLaTabla(fechaSeleccionada) {
@@ -316,8 +327,8 @@ function rellenarLaTabla(fechaSeleccionada) {
 
         for (let i = 0; i < 24; i++) {
             row += `
-                <td class="align-middle text-center" id="${i + 1}:00"></td>
-                <td class="align-middle text-center" id="${i + 1}:30"></td>
+                <td id="${i + 1}:00"></td>
+                <td id="${i + 1}:30"></td>
             `;
         }
 
@@ -459,9 +470,16 @@ function crearAlertsEventos(eventos) {
 
                         if (columnaIndice !== -1) {
                             console.log(`En la sala ${contenido}: ${evento.titulo} y comienza a las ${horaInicio}`);
-                
-                            // Agregar el divElement en la celda específica
-                            $(this).find(`td:nth-child(${columnaIndice + 1})`).append(divElement);
+
+                            var $divElement = $(divElement); // Convertir a objeto jQuery
+
+                            var $celda = $(this).find(`td:nth-child(${columnaIndice + 1})`);
+                            var posicion = $celda.position();
+                            var leftPosition = posicion.left + $celda.width(); // Ajustar la posición según tus necesidades
+
+                            $divElement.css({ left: leftPosition, top: posicion.top });
+
+                            $('body').append(divElement);
                         }
                     }
                 });
@@ -562,4 +580,19 @@ function controlAlertConferencia() {
     } else {
         alertConferencia.hide();
     }
+}
+
+function checkAlertVisibility(alertElements, columnSalasLeft) {
+    const windowScrollLeft = $(window).scrollLeft();
+    const windowWidth = $(window).width();
+
+    alertElements.each(function () {
+        const alertLeft = $(this).offset().left - windowScrollLeft;
+
+        if (alertLeft < columnSalasLeft + windowWidth && alertLeft > columnSalasLeft) {
+            $(this).hide(); // Ocultar el elemento .alert
+        } else {
+            $(this).show(); // Mostrar el elemento .alert
+        }
+    });
 }
