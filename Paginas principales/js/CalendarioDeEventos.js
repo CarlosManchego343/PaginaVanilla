@@ -279,8 +279,6 @@ $(document).ready(function () {
     $(window).on("load", function () {
         controlarBusqueda("");
     });
-
-
 })
 
 function rellenarLaTabla(fechaSeleccionada) {
@@ -308,7 +306,7 @@ function rellenarLaTabla(fechaSeleccionada) {
 
     for (let i = 0; i < salasUnicas.length; i++) {
 
-        row = `<tr class="filasSalas" data-sala="${salasUnicas[i]}">
+        row = `<tr class="filasSalas" id="${salasUnicas[i]}">
                 <td class="align-middle text-center sticky">${salasUnicas[i]}</td>
         `
 
@@ -407,10 +405,13 @@ function crearAlertsEventos(eventos) {
         eventosAgrupados[sala][horaInicio].push(evento);
     });
 
+    $("#tabla tbody tr").find("td:not(:first-child)").empty();
+
     $("#alerts").empty();
 
     for (const sala in eventosAgrupados) {
         for (const horaInicio in eventosAgrupados[sala]) {
+
 
             const eventosSalaHora = eventosAgrupados[sala][horaInicio];
 
@@ -441,6 +442,14 @@ function crearAlertsEventos(eventos) {
                     <p class="mb-0">Horario: ${evento.horaInicio} - ${evento.horaFin}</p>
                 </div>
             `;
+
+            $("#tabla tbody tr").each(function() {
+                var contenido = $(this).find("td:first-child").html();
+        
+                if (contenido === sala) {
+                    console.log(`En la sala ${contenido}: ${evento.titulo}`);
+                }
+            });
 
                 $("#alerts").append(divElement);
             })
